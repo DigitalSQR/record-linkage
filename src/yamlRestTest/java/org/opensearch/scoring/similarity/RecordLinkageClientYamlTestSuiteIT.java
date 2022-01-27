@@ -13,7 +13,7 @@ import org.opensearch.test.rest.yaml.ClientYamlTestCandidate;
 import org.opensearch.test.rest.yaml.OpenSearchClientYamlSuiteTestCase;
 
 
-public class RecordLinkageYamlTestSuiteIT extends OpenSearchClientYamlSuiteTestCase {
+public class RecordLinkageClientYamlTestSuiteIT extends OpenSearchClientYamlSuiteTestCase {
 
     public RecordLinkageClientYamlTestSuiteIT(@Name("yaml") ClientYamlTestCandidate testCandidate) {
         super(testCandidate);

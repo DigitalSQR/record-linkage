@@ -10,6 +10,7 @@ def pluginDescription = 'Record Linkage'
 def projectPath = 'org.opensearch'
 def pathToPlugin = 'scoring.similarity'
 def pluginClassName = 'RecordLinkagePlugin'
+def pluginVersion = '1.2.4'
 
 tasks.register("preparePluginPathDirs") {
     mustRunAfter clean
@@ -27,6 +28,7 @@ opensearchplugin {
     classname "${projectPath}.${pathToPlugin}.${pluginClassName}"
     licenseFile rootProject.file('LICENSE.txt')
     noticeFile rootProject.file('NOTICE.txt')
+    version pluginVersion
 }
 
 // This requires an additional Jar not published as part of build-tools

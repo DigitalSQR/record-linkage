@@ -5,11 +5,11 @@ apply plugin: 'idea'
 apply plugin: 'opensearch.opensearchplugin'
 apply plugin: 'opensearch.yaml-rest-test'
 
-def pluginName = 'rename'
-def pluginDescription = 'Custom plugin'
+def pluginName = 'record-linkage'
+def pluginDescription = 'Record Linkage'
 def projectPath = 'org.opensearch'
-def pathToPlugin = 'path.to.plugin'
-def pluginClassName = 'RenamePlugin'
+def pathToPlugin = 'scoring.similarity'
+def pluginClassName = 'RecordLinkagePlugin'
 
 tasks.register("preparePluginPathDirs") {
     mustRunAfter clean

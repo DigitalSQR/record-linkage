@@ -1,0 +1,65 @@
+# Integration tests for the similarity scoring script example plugin
+#
+---
+setup:
+  - do:
+      indices.create:
+          index:  test
+
+  - do:
+      index:
+        index:  test
+        id:     1
+        body:   { "name": ["John Doe"], "address": ["ABC Street"] }
+  - do:
+        index:
+          index:  test
+          id:     2
+          body:   { "name": ["Jane Doe"], "address": ["XYZ Str"] }
+  - do:
+        index:
+          index:  test
+          id:     3
+          body:   { "name": ["Xbubu"], "address": ["D-Street"] }
+
+  - do:
+      indices.refresh: {}
+---
+"document scoring":
+  - do:
+      search:
+        rest_total_hits_as_int: true
+        index: test
+        body:
+          query:
+            function_score:
+              query:
+                match_all: {}
+              functions:
+                - script_score:
+                    script:
+                      source: "string_similarity"
+                      lang: "similarity_scripts"
+                      params:
+                        score_mode: "fellegi-sunter"
+                        base_score: 100
+                        matchers: [{
+                          field: "name",
+                          value: "jne doe",
+                          matcher: "jaro-winkler-similarity",
+                          threshold: 0.80,
+                          m_value: 0.95,
+                          u_value: 0.000034
+                        },{
+                          field: "address",
+                          value: "ABC Street",
+                          matcher: "jaro-winkler-similarity",
+                          threshold: 0.80,
+                          m_value: 0.85,
+                          u_value: 0.000034
+                        }]
+
+  - length: { hits.hits: 3 }
+  - match: {hits.hits.0._id: "2" }
+  - match: {hits.hits.1._id: "1" }
+  - match: {hits.hits.2._id: "3" }

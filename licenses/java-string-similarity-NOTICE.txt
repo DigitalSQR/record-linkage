@@ -1,0 +1,2 @@
+Java String Similarity (https://github.com/tdebatty/java-string-similarity)
+Copyright Thibault Debatty

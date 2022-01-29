@@ -54,6 +54,16 @@ systemctl restart opensearch
 Replace path-to-plugin-zip-file with the correct path to the plugin installation zip
 file.
 
+## Docker Image
+
+You can create a docker image of OpenSearch with the plugin loaded with these commands:
+
+```bash
+docker build --tag=opensearch-record-linkage .
+docker run -p 9200:9200 -p 9600:9600 -v /usr/share/opensearch/data opensearch-record-linkage
+```
+
+
 ## Querying
 Just like the old plugin, the new plugin may be tested by submitting to an OpenSearch
 server a JSON formatted query of the following form.

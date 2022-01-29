@@ -19,6 +19,7 @@ import info.debatty.java.stringsimilarity.NormalizedLevenshtein;
 import info.debatty.java.stringsimilarity.OptimalStringAlignment;
 import info.debatty.java.stringsimilarity.QGram;
 import info.debatty.java.stringsimilarity.SorensenDice;
+import info.debatty.java.stringsimilarity.RatcliffObershelp;
 import info.debatty.java.stringsimilarity.interfaces.NormalizedStringSimilarity;
 import info.debatty.java.stringsimilarity.interfaces.NormalizedStringDistance;
 import info.debatty.java.stringsimilarity.interfaces.StringDistance;
@@ -125,6 +126,7 @@ public class MatcherService {
             case "jaro-winkler-similarity":
             case "normalized-levenshtein-similarity":
             case "normalized-lcs-similarity":
+            case "ratcliff-obershelp":
                 return true;
             default:
                 return false;
@@ -166,6 +168,10 @@ public class MatcherService {
                 simMatcher = new NormalizedLongestCommonSubsequence();
                 matchers.put(matcherName, new StringComparisonMatcher(simMatcher));
                 break;
+            case "ratcliff-obershelp":
+                simMatcher = new RatcliffObershelp();
+                matchers.put(matcherName, new StringComparisonMatcher(simMatcher));
+                break;            
             case "levenshtein":
                 disMatcher = new Levenshtein();
                 matchers.put(matcherName, new StringComparisonMatcher(disMatcher));

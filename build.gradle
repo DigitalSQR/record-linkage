@@ -10,7 +10,7 @@ def pluginDescription = 'Record Linkage'
 def projectPath = 'org.opensearch'
 def pathToPlugin = 'scoring.similarity'
 def pluginClassName = 'RecordLinkagePlugin'
-def pluginVersion = '1.2.4'
+def pluginVersion = '1.2.4.0'
 
 tasks.register("preparePluginPathDirs") {
     mustRunAfter clean

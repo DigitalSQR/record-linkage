@@ -4,7 +4,7 @@ An OpenSearch plugin for scoring documents based on string similarity.  This is 
 
 ## Details
 The OpenSearch plugin  relies on the https://github.com/tdebatty/java-string-similarity library. 
-The library is fully open source and publicly hosted on Github under the MIT licence. 
+The library is fully open source and publicly hosted on Github under the MIT license. 
 
 The plugin currently supports these algorithms.  See the above library for more details.
 

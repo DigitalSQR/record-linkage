@@ -10,7 +10,7 @@ def pluginDescription = 'Record Linkage'
 def projectPath = 'org.opensearch'
 def pathToPlugin = 'scoring.similarity'
 def pluginClassName = 'RecordLinkagePlugin'
-def pluginVersion = '2.0.1.0'
+def pluginVersion = '2.1.0.0'
 
 tasks.register("preparePluginPathDirs") {
     mustRunAfter clean
@@ -39,7 +39,7 @@ validateNebulaPom.enabled = false
 
 buildscript {
     ext {
-        opensearch_version = "2.0.1"
+        opensearch_version = "2.1.0"
     }
 
     repositories {
